@@ -5413,6 +5413,11 @@
     "mockdate" "^3.0.2"
     "string-hash-64" "^1.0.3"
 
+"react-native-receive-sharing-intent@^2.0.0":
+  "integrity" "sha512-JFSO8mZm/hU0EJQYhC5z2m1iiMwJhD9CQ/hYQ8t1UQ9mQynoS/yo+hjX2T6hFXa8mtzlwO/BFwKZjBaVNPdWuw=="
+  "resolved" "https://registry.npmjs.org/react-native-receive-sharing-intent/-/react-native-receive-sharing-intent-2.0.0.tgz"
+  "version" "2.0.0"
+
 "react-native-safe-area-context@^3.2.0", "react-native-safe-area-context@>= 0.6.0", "react-native-safe-area-context@3.2.0":
   "integrity" "sha512-k2Nty4PwSnrg9HwrYeeE+EYqViYJoOFwEy9LxL5RIRfoqxAq/uQXNGwpUg2/u4gnKpBbEPa9eRh15KKMe/VHkA=="
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.2.0.tgz"

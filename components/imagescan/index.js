@@ -2,7 +2,6 @@ import React from "react";
 
 import { useState,useEffect } from "react";
 
-import AppIntroSlider from "react-native-app-intro-slider";
 
 import{
     View,

@@ -10,6 +10,8 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import expo.modules.splashscreen.singletons.SplashScreen;
 import expo.modules.splashscreen.SplashScreenImageResizeMode;
 
+import android.content.Intent;
+
 public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +43,11 @@ public class MainActivity extends ReactActivity {
                 return new RNGestureHandlerEnabledRootView(MainActivity.this);
             }
         };
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 }
