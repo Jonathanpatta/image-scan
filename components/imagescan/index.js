@@ -1,6 +1,11 @@
 import React from "react";
 
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
+
+import RecieveSharingIntent from "react-native-receive-sharing-intent";
+
+import { sharedFilesContext } from "../../sharedFilesContext";
+
 
 
 import{
@@ -24,6 +29,11 @@ const ImageScanStyles = StyleSheet.create({
     }
 });
 
+
+
+ 
+
+
 const ImageScan = ({navigation}) => {
 
     
@@ -34,19 +44,26 @@ const ImageScan = ({navigation}) => {
     //if image had been processed
     const [Processed, setProcessed] = useState(false);
 
+    const [imguri, setImguri] = useState(null);
+
     const [ImageLoaded, setImageLoaded] = useState(false);
+
+    const [ImageLoadingError, setImageLoadingError] = useState(null);
+
+    const sharedFiles = useContext(sharedFilesContext);
 
     
 
     useEffect(()=>{
         setTimeout(()=>{setScanned(true);},2000);
+
+        if(sharedFiles){
+            setImguri(sharedFiles[0].contentUri);
+        }
+
+        console.log("shared files:",sharedFiles);
         
 
-        
-
-        
-        
-        //setProcessed(true);
     });
 
     
@@ -66,14 +83,11 @@ const ImageScan = ({navigation}) => {
 
     useEffect(()=>{
 
-        if(Processed){
-            console.log("processed");
-        }
-        else{
-            console.log("waiting to be processed");
-        }
+        alert("error with loading the image");
 
-    },[Processed])
+        
+
+    },[ImageLoadingError]);
 
 
 
@@ -92,7 +106,7 @@ const ImageScan = ({navigation}) => {
             <Image
             style={ImageScanStyles.imgscan}
             source={{
-                uri:'https://reactnative.dev/img/tiny_logo.png',
+                uri:imguri,
             }}
             onLoad={e =>{setLoaded(true);}}
             >
