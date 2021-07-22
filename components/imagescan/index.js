@@ -81,13 +81,7 @@ const ImageScan = ({navigation}) => {
 
     },[Scanned]);
 
-    useEffect(()=>{
-
-        alert("error with loading the image");
-
-        
-
-    },[ImageLoadingError]);
+    
 
 
 
@@ -106,7 +100,7 @@ const ImageScan = ({navigation}) => {
             <Image
             style={ImageScanStyles.imgscan}
             source={{
-                uri:imguri,
+                uri:'https://reactnative.dev/img/tiny_logo.png',
             }}
             onLoad={e =>{setLoaded(true);}}
             >
