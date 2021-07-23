@@ -15,7 +15,6 @@ import ReceiveSharingIntent from "react-native-receive-sharing-intent";
 import { useEffect } from 'react/cjs/react.development';
 
 
-
 import SharedFilesProvider from './sharedFilesContext';
 
 
@@ -30,6 +29,8 @@ const appStack = createStackNavigator();
 
 
 export default function App() {
+
+
 
   
 

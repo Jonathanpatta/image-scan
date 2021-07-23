@@ -66,6 +66,7 @@ const ImageScan = ({navigation}) => {
  
             MLKit.MyFunction(
                 filepath,
+                "image",
                 (error)=>{
                     console.log("This is an error",error);
                 },
