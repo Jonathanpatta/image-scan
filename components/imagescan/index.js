@@ -64,9 +64,12 @@ const ImageScan = ({navigation}) => {
             let filepath = sharedFiles[0].filePath;
             console.log(filepath);
  
-            MLKit.MyFunction(
+            MLKit.QueueScanTask(
                 filepath,
-                "image",
+
+                //you can give a unique id for every scan task which will be returned in the response event
+                "image1",
+
                 (error)=>{
                     console.log("This is an error",error);
                 },
