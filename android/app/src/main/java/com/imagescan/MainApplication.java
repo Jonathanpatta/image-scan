@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 
-import com.dhiway.app.seqr.MLKitModulePackage;
+
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;

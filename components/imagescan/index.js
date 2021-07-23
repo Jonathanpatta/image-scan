@@ -6,6 +6,7 @@ import RecieveSharingIntent from "react-native-receive-sharing-intent";
 
 import { sharedFilesContext } from "../../sharedFilesContext";
 
+import MLKit from "../../MLKitMod";
 
 
 import{
@@ -59,12 +60,27 @@ const ImageScan = ({navigation}) => {
 
         if(sharedFiles){
             setImguri(sharedFiles[0].contentUri);
+
+            let filepath = sharedFiles[0].filePath;
+            console.log(filepath);
+ 
+            MLKit.MyFunction(
+                filepath,
+                (error)=>{
+                    console.log("This is an error",error);
+                },
+                (response)=>{
+      
+                  console.log("This is a success response",response);
+      
+                }
+              ); 
         }
 
         console.log("shared files:",sharedFiles);
         
 
-    });
+    },[sharedFiles]);
 
     
 

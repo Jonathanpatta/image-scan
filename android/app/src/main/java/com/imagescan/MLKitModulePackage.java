@@ -1,4 +1,4 @@
-package com.dhiway.app.seqr;
+package com.imagescan;
 
 import androidx.annotation.NonNull;
 
