@@ -21,16 +21,17 @@ const styles = StyleSheet.create({
     }
 })
 
-const Result = ({navigation}) => {
+const Result = ({route,navigation}) => {
 
-    const [ResultData,setResultData] = useState(null);
     const [ResultText, setResultText] = useState("Result Not Found");
 
+    const resultData = route.params
+
     useEffect(() => {
-        if(ResultData){
-            setResultText("Success");
+        if(resultData){
+            setResultText(resultData.data[0].rawValue);
         }
-    },[ResultData,ResultText])
+    })
 
 
     

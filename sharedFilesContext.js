@@ -3,7 +3,7 @@ import ReceiveSharingIntent from "react-native-receive-sharing-intent";
 import { useContext,useState,useEffect } from "react";
 
 
-import { NativeEventEmitter,NativeModules } from 'react-native';
+import { NativeModules } from 'react-native';
 
 import React from "react";
 
@@ -33,10 +33,7 @@ const SharedFilesProvider = ({children}) => {
     'ShareMedia' // share url protocol (must be unique to your app, suggest using your apple bundle id)
     );
 
-    const eventEmitter = new NativeEventEmitter(NativeModules.MLKit);
-    const eventListener = eventEmitter.addListener('ScanResponse', (event) => {
-            console.log(event); 
-        });
+    
 
     
     return ( () => {

@@ -56,7 +56,6 @@ const ImageScan = ({navigation}) => {
     
 
     useEffect(()=>{
-        setTimeout(()=>{setScanned(true);},2000);
 
         if(sharedFiles){
             setImguri(sharedFiles[0].contentUri);
@@ -64,21 +63,26 @@ const ImageScan = ({navigation}) => {
             let filepath = sharedFiles[0].filePath;
             console.log(filepath);
  
-            MLKit.QueueScanTask(
-                filepath,
+            
 
-                //you can give a unique id for every scan task which will be returned in the response event
-                "image1",
-
-                (error)=>{
-                    console.log("This is an error",error);
-                },
-                (response)=>{
-      
-                  console.log("This is a success response",response);
-      
+            const onScan = async () => {
+                try{
+                    const result = await MLKit.ScanImage(filepath);
+                    console.log("result from the promise:",result);
+                    setScanned(true);
+                    navigation.navigate('result',result);
                 }
-              ); 
+                catch(error){
+                    console.log(error);
+                }
+            }
+            onScan();
+
+            
+
+            
+
+            
         }
 
         console.log("shared files:",sharedFiles);
@@ -92,7 +96,7 @@ const ImageScan = ({navigation}) => {
 
         if(Scanned){
             console.log("scanned");
-            navigation.push('result');
+            //navigation.navigate('result');
         }
         else{
             console.log("waiting to be scanned");
