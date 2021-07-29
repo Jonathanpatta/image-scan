@@ -1,8 +1,8 @@
-#Usage
+# Usage
 
 The MLKit.ScanImage returns a promise.
 
-'''javascript
+```javascript
 import { NativeModules } from "react-native";
 import MLKit from NativeModules;
 
@@ -15,4 +15,4 @@ try{
 catch(error){
     console.log(error);
 }
-'''
+```
