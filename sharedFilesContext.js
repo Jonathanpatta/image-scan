@@ -21,60 +21,50 @@ const SharedFilesProvider = ({children}) => {
 
   const handleAppStateChange = (nextAppState) => {
 
-    ReceiveSharingIntent.getReceivedFiles(files => {
-      // files returns as JSON Array example
-      //[{ filePath: null, text: null, weblink: null, mimeType: null, contentUri: null, fileName: null, extension: null }]
-      setSharedFiles(files);
-      console.log("set from inside handleasppstatechange",files.length);
-    }, 
-    (error) =>{
-      console.log(error);
-    }, 
-    'ShareMedia' // share url protocol (must be unique to your app, suggest using your apple bundle id)
-    );
+    
+    
+
+
     if (appState.current.match(/inactive|background/) && nextAppState === "active") {
+      ReceiveSharingIntent.getReceivedFiles(files => {
+        // files returns as JSON Array example
+        //[{ filePath: null, text: null, weblink: null, mimeType: null, contentUri: null, fileName: null, extension: null }]
+        setSharedFiles(files);
+        console.log("set from inside handleasppstatechange",files.length);
+        
+      }, 
+      (error) =>{
+        console.log(error);
+      }, 
+      'imagescan' // share url protocol (must be unique to your app, suggest using your apple bundle id)
+      )
+
+
       console.log("App has come to the foreground!");
       
-    }
-    else{
-      //ReceiveSharingIntent.clearReceivedFiles();
-      //console.log("files cleared from state change");
     }
 
     appState.current = nextAppState;
     setAppStateVisible(appState.current);
     console.log("AppState", appState.current);
+
+    /*if(appState.current.match(/inactive|background/)){
+      console.log("clearing files");
+      ReceiveSharingIntent.clearReceivedFiles();
+    }*/
   }
 
   useEffect(() => {
 
 
+    console.log("inside useeffect");
     AppState.addEventListener("change", handleAppStateChange);
-    /* ReceiveSharingIntent.getReceivedFiles(files => {
-      // files returns as JSON Array example
-      //[{ filePath: null, text: null, weblink: null, mimeType: null, contentUri: null, fileName: null, extension: null }]
+    //console.log("inside useeffect");
     
-
-      setSharedFiles(files);
-    
-    
-    }, 
-    (error) =>{
-      console.log(error);
-    }, 
-    'ShareMedia' // share url protocol (must be unique to your app, suggest using your apple bundle id)
-    ); */
-
-    
-
-    
-    return ( () => {
+    /* return ( () => {
       AppState.removeEventListener("change", handleAppStateChange);
-      //ReceiveSharingIntent.clearReceivedFiles();
-      
-      //console.log("cleared files");
-    })
-  });
+    }) */ 
+  },[]);
 
 
     return ( 

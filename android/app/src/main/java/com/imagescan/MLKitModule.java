@@ -64,9 +64,8 @@ class BarcodeScanningActivity extends AppCompatActivity {
 }
 
 class BarcodeDataProcessor{
-    String Taskid;
-    public BarcodeDataProcessor(String taskid){
-        Taskid = taskid;
+    public BarcodeDataProcessor(){
+
     }
 
     public WritableMap createSuccessResponse(List<Barcode> barcodes){
@@ -263,14 +262,14 @@ class BarcodeDataProcessor{
                     map.putMap("driverLicenseData",dlData);
                     break;
 
-
+                default:
+                    map.putString("valueType","unknown");
+                    break;
 
             }
             response.pushMap(map);
         }
         SuccessResponse.putArray("data",response);
-
-        SuccessResponse.putString("taskid",Taskid);
 
 
 
@@ -281,8 +280,6 @@ class BarcodeDataProcessor{
         WritableMap map = new WritableNativeMap();
         map.putBoolean("Success",false);
         map.putString("error",e.getMessage());
-
-        map.putString("taskid",Taskid);
 
         return map;
     }
@@ -311,7 +308,7 @@ public class MLKitModule  extends ReactContextBaseJavaModule {
 
             Task<List<Barcode>> scanTask = bc.getScanningTask(img);
 
-            BarcodeDataProcessor bdp = new BarcodeDataProcessor("image task");
+            BarcodeDataProcessor bdp = new BarcodeDataProcessor();
 
             scanTask.addOnSuccessListener(barcodes -> {
                 WritableMap SuccessResponse = bdp.createSuccessResponse(barcodes);

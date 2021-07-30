@@ -30,6 +30,7 @@ export default function App() {
           <appStack.Screen
             name="result"
             component={Result}
+            options={({ route }) => ({ title: route.params.data[0].valueType })}
           />
         </appStack.Navigator>
       </NavigationContainer>
