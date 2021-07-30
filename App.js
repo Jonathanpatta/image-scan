@@ -10,62 +10,12 @@ import Result from './components/imagescan/result';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { NavigationContainer } from '@react-navigation/native';
-
-import ReceiveSharingIntent from "react-native-receive-sharing-intent";
-
-
 import SharedFilesProvider from './sharedFilesContext';
-
-import { AppState } from "react-native";
-
-
-
-
-
 
 
 const appStack = createStackNavigator();
 
-
-
-
-
 export default function App() {
-
-  
-  const onGetIntentFiles = (files) => {
-    console.log(files);
-    if(files){
-      let filePath = files[0].filePath;
-      console.log(filePath);
-
-      const onScan = async () => {
-        try{
-          const result = await MLKit.ScanImage(filepath);
-          console.log("result from the promise:",result);
-        }
-        catch(error){
-            console.log(error);
-        }
-      }
-    }
-    
-  }
-
-  const onIntentFilesError = (error) => {
-    console.log(error);
-  }
-
-  const handleAppStateChange = (nextAppState) => {
-    
-  }
-
-  useEffect(() => {
-    
-  },[])
-
-  
-
 
 
   return (
