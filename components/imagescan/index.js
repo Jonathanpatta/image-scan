@@ -37,34 +37,18 @@ const ImageScanStyles = StyleSheet.create({
 
 const ImageScan = ({navigation}) => {
 
-    
-    const [QrCodeFound, setQrCodeFound] = useState(false);
     const [Loaded, setLoaded] = useState(false);
     //if image has been scanned
     const [Scanned,setScanned] = useState(false);
-    //if image had been processed
-    const [Processed, setProcessed] = useState(false);
-
-    const [imguri, setImguri] = useState(null);
-
-    const [ImageLoaded, setImageLoaded] = useState(false);
-
-    const [ImageLoadingError, setImageLoadingError] = useState(null);
 
     const sharedFiles = useContext(sharedFilesContext);
 
     
 
     useEffect(()=>{
-
         if(sharedFiles){
-            setImguri(sharedFiles[0].contentUri);
 
             let filepath = sharedFiles[0].filePath;
-            console.log(filepath);
- 
-            
-
             const onScan = async () => {
                 try{
                     const result = await MLKit.ScanImage(filepath);
@@ -77,37 +61,19 @@ const ImageScan = ({navigation}) => {
                 }
             }
             onScan();
-
-            
-
-            
-
-            
         }
-
-        console.log("shared files:",sharedFiles);
-        
-
     },[sharedFiles]);
 
     
 
     useEffect(()=>{
-
         if(Scanned){
             console.log("scanned");
-            //navigation.navigate('result');
         }
         else{
             console.log("waiting to be scanned");
         }
-
-
     },[Scanned]);
-
-    
-
-
 
 
     return ( 
