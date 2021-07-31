@@ -2,8 +2,6 @@ import React from "react";
 
 import { useState,useEffect,useContext } from "react";
 
-import RecieveSharingIntent from "react-native-receive-sharing-intent";
-
 import { sharedFilesContext } from "../../sharedFilesContext";
 
 import MLKit from "../../MLKitMod";
@@ -22,28 +20,21 @@ const ImageScanStyles = StyleSheet.create({
     container:{
         alignItems:"center",
         justifyContent:"center",
+        flex:1,
+        backgroundColor:"red",
     },
-    imgscan:{
-        width:200,
-        height:200,
-        marginTop:50,
+    scan_text:{
+        color:"white",
+        fontSize:25,
     }
 });
 
-
-
- 
-
-
 const ImageScan = ({navigation}) => {
 
-    const [Loaded, setLoaded] = useState(false);
     //if image has been scanned
     const [Scanned,setScanned] = useState(false);
 
     const sharedFiles = useContext(sharedFilesContext);
-
-    
 
     useEffect(()=>{
         if(sharedFiles){
@@ -81,21 +72,9 @@ const ImageScan = ({navigation}) => {
         <View 
             style={ImageScanStyles.container}
             >
-            {!Scanned && <Text>
-                    Scanning
+            {!Scanned && <Text style={ImageScanStyles.scan_text}>
+                    Open Image with this app
                 </Text>}
-            {!Loaded && <Text>
-                Loading
-                </Text>}
-            <Image
-            style={ImageScanStyles.imgscan}
-            source={{
-                uri:'https://reactnative.dev/img/tiny_logo.png',
-            }}
-            onLoad={e =>{setLoaded(true);}}
-            >
-
-            </Image>
         </View>
      );
 }

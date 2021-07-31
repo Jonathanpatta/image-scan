@@ -1,6 +1,6 @@
 # Usage
 
-The MLKit.ScanImage returns a promise.
+The `MLKit.ScanImage` returns a promise.
 
 ```javascript
 import { NativeModules } from "react-native";

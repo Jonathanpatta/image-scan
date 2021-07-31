@@ -22,13 +22,7 @@ const SharedFilesProvider = ({children}) => {
   const handleAppStateChange = (nextAppState) => {
 
     
-    
-    
-
-    if (appState.current.match(/inactive|background/) && nextAppState === "active") {
-      
-
-      ReceiveSharingIntent.getReceivedFiles(files => {
+    ReceiveSharingIntent.getReceivedFiles(files => {
         // files returns as JSON Array example
         //[{ filePath: null, text: null, weblink: null, mimeType: null, contentUri: null, fileName: null, extension: null }]
         
@@ -42,19 +36,13 @@ const SharedFilesProvider = ({children}) => {
       }, 
       'imagescan' // share url protocol (must be unique to your app, suggest using your apple bundle id)
       )
+    
 
-
+    if (appState.current.match(/inactive|background/) && nextAppState === "active") {
+      
       console.log("App has come to the foreground!");
       
     }
-    else{
-      console.log("clear files");
-      //ReceiveSharingIntent.clearReceivedFiles();
-      
-    }
-
-
-
     appState.current = nextAppState;
     setAppStateVisible(appState.current);
     console.log("AppState", appState.current);
