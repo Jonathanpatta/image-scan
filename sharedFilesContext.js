@@ -23,12 +23,16 @@ const SharedFilesProvider = ({children}) => {
 
     
     
-
+    
 
     if (appState.current.match(/inactive|background/) && nextAppState === "active") {
+      
+
       ReceiveSharingIntent.getReceivedFiles(files => {
         // files returns as JSON Array example
         //[{ filePath: null, text: null, weblink: null, mimeType: null, contentUri: null, fileName: null, extension: null }]
+        
+
         setSharedFiles(files);
         console.log("set from inside handleasppstatechange",files.length);
         
@@ -43,29 +47,37 @@ const SharedFilesProvider = ({children}) => {
       console.log("App has come to the foreground!");
       
     }
+    else{
+      console.log("clear files");
+      //ReceiveSharingIntent.clearReceivedFiles();
+      
+    }
+
+
 
     appState.current = nextAppState;
     setAppStateVisible(appState.current);
     console.log("AppState", appState.current);
 
-    /*if(appState.current.match(/inactive|background/)){
-      console.log("clearing files");
-      ReceiveSharingIntent.clearReceivedFiles();
-    }*/
+   
   }
 
-  useEffect(() => {
+   useEffect(() => {
 
 
     console.log("inside useeffect");
     AppState.addEventListener("change", handleAppStateChange);
-    //console.log("inside useeffect");
-    
-    /* return ( () => {
-      AppState.removeEventListener("change", handleAppStateChange);
-    }) */ 
-  },[]);
 
+    
+    return ( () => {
+      AppState.removeEventListener("change", handleAppStateChange);
+      //ReceiveSharingIntent.clearReceivedFiles();
+    }) 
+
+
+
+  },[]);
+ 
 
     return ( 
         <sharedFilesContext.Provider value={sharedFiles}>

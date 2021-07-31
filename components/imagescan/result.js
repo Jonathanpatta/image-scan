@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
     container:{
         alignItems:"center",
         justifyContent:"center",
+        backgroundColor:"red",
+        flex:1,
     },
     result_text:{
-        backgroundColor:"red",
-        fontSize:20
+        color:"white",
+        fontSize:25,
     }
 })
 
@@ -37,7 +39,7 @@ const Result = ({route,navigation}) => {
     
     return ( <>
         <View style={styles.container}>
-            <Text>
+            <Text style={styles.result_text}>
                 {ResultText}
             </Text>
         </View>
