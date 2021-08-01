@@ -21,19 +21,30 @@ export default function App() {
   return (
 
     <SharedFilesProvider>
-      <NavigationContainer>
-        <appStack.Navigator>
-          <appStack.Screen
-            name="image scan"
-            component={ImageScan}
-          />
-          <appStack.Screen
-            name="result"
-            component={Result}
-            options={({ route }) => ({ title: route.params.data[0].valueType })}
-          />
-        </appStack.Navigator>
-      </NavigationContainer>
+      
+        <NavigationContainer>
+          <appStack.Navigator screenOptions={{
+              headerTransparent:true,
+              headerStyle:{
+                
+              },
+              headerTitleAlign:"center",
+              headerTintColor:"white",
+
+            }}>
+            <appStack.Screen
+              name="image scan"
+              component={ImageScan}
+              
+            />
+            <appStack.Screen
+              name="result"
+              component={Result}
+              options={({ route }) => ({ title: route.params.data[0].valueType })}
+            />
+          </appStack.Navigator>
+        </NavigationContainer>
+      
     </SharedFilesProvider>
     
   );
@@ -42,7 +53,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

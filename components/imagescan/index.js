@@ -21,7 +21,7 @@ const ImageScanStyles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         flex:1,
-        backgroundColor:"red",
+        backgroundColor:"teal",
     },
     scan_text:{
         color:"white",
@@ -72,9 +72,9 @@ const ImageScan = ({navigation}) => {
         <View 
             style={ImageScanStyles.container}
             >
-            {!Scanned && <Text style={ImageScanStyles.scan_text}>
+            <Text style={ImageScanStyles.scan_text}>
                     Open Image with this app
-                </Text>}
+            </Text>
         </View>
      );
 }
