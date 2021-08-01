@@ -1,10 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
-import { useState ,useEffect,useRef} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-import ImageScan from './components/imagescan'; 
+import ImageScan from './components/imagescan/home'; 
 import Result from './components/imagescan/result';
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -40,7 +36,7 @@ export default function App() {
             <appStack.Screen
               name="result"
               component={Result}
-              options={({ route }) => ({ title: route.params.data[0].valueType })}
+              options={({ route }) => ({ title: route.params.data==null?"error":(route.params.data.length == 0?"unknown":route.params.data[0].valueType) })}
             />
           </appStack.Navigator>
         </NavigationContainer>
@@ -49,11 +45,3 @@ export default function App() {
     
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

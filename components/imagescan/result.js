@@ -31,7 +31,12 @@ const Result = ({route,navigation}) => {
 
     useEffect(() => {
         if(resultData){
-            setResultText(resultData.data[0].rawValue);
+            if(resultData.data.length != 0){
+                setResultText(resultData.data[0].rawValue);
+            }
+            else{
+                setResultText("no barcode found");
+            }
         }
     })
 
